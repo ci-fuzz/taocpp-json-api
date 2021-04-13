@@ -1,0 +1,37 @@
+{
+  "name": "run_all_event_validations-49919590",
+  "displayName": "run_all_event_validations",
+  "maxRunTime": "1800s",
+  "fuzzTargets": [
+    "cbor_validation-e67dbd5b",
+    "jaxn_validation-e1d0fd29",
+    "json_validation-ec5361ba",
+    "msgpack_validation-c627c39d",
+    "ubjson_validation-73aa71cf"
+  ],
+  "fuzzerRunConfigurations": [
+    {
+      "engine": "LIBFUZZER",
+      "sanitizer": "ADDRESS",
+      "numberOfJobs": 1,
+      "environment": [
+        ""
+      ],
+      "engineArguments": [
+        "-entropic=1"
+      ]
+    },
+    {
+      "engine": "LIBFUZZER",
+      "sanitizer": "ADDRESS",
+      "numberOfJobs": 1,
+      "environment": [
+        ""
+      ],
+      "engineArguments": [
+        "-entropic=1",
+        "-use_value_profile=1"
+      ]
+    }
+  ]
+}
