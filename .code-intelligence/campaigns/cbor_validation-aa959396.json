@@ -1,0 +1,51 @@
+{
+  "name": "cbor_validation-aa959396",
+  "displayName": "cbor_validation",
+  "maxRunTime": "1800s",
+  "fuzzTargets": [
+    "cbor_validation-e67dbd5b"
+  ],
+  "fuzzerRunConfigurations": [
+    {
+      "engine": "LIBFUZZER",
+      "sanitizer": "ADDRESS",
+      "numberOfJobs": 1,
+      "engineArguments": [
+        "-entropic=1"
+      ]
+    },
+    {
+      "engine": "LIBFUZZER",
+      "sanitizer": "ADDRESS",
+      "numberOfJobs": 1,
+      "engineArguments": [
+        "-entropic=1",
+        "-use_value_profile=1"
+      ]
+    }
+  ],
+  "configuredTargets": [
+    {
+      "fuzzTarget": "cbor_validation-e67dbd5b",
+      "fuzzerRunConfigurations": [
+        {
+          "engine": "LIBFUZZER",
+          "sanitizer": "ADDRESS",
+          "numberOfJobs": 1,
+          "engineArguments": [
+            "-entropic=1"
+          ]
+        },
+        {
+          "engine": "LIBFUZZER",
+          "sanitizer": "ADDRESS",
+          "numberOfJobs": 1,
+          "engineArguments": [
+            "-entropic=1",
+            "-use_value_profile=1"
+          ]
+        }
+      ]
+    }
+  ]
+}

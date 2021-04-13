@@ -1,0 +1,51 @@
+{
+  "name": "json_validation-47390015",
+  "displayName": "json_validation",
+  "maxRunTime": "1800s",
+  "fuzzTargets": [
+    "json_validation-ec5361ba"
+  ],
+  "fuzzerRunConfigurations": [
+    {
+      "engine": "LIBFUZZER",
+      "sanitizer": "ADDRESS",
+      "numberOfJobs": 1,
+      "engineArguments": [
+        "-entropic=1"
+      ]
+    },
+    {
+      "engine": "LIBFUZZER",
+      "sanitizer": "ADDRESS",
+      "numberOfJobs": 1,
+      "engineArguments": [
+        "-entropic=1",
+        "-use_value_profile=1"
+      ]
+    }
+  ],
+  "configuredTargets": [
+    {
+      "fuzzTarget": "json_validation-ec5361ba",
+      "fuzzerRunConfigurations": [
+        {
+          "engine": "LIBFUZZER",
+          "sanitizer": "ADDRESS",
+          "numberOfJobs": 1,
+          "engineArguments": [
+            "-entropic=1"
+          ]
+        },
+        {
+          "engine": "LIBFUZZER",
+          "sanitizer": "ADDRESS",
+          "numberOfJobs": 1,
+          "engineArguments": [
+            "-entropic=1",
+            "-use_value_profile=1"
+          ]
+        }
+      ]
+    }
+  ]
+}
