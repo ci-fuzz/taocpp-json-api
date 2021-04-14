@@ -7,8 +7,9 @@ on:
     branches: [ master ]
 
 env:
-  FUZZING_SERVER_ADDRESS: 'grpc-api.beta.code-intelligence.com:443'
-  WEB_APP_ADDRESS: 'https://app.beta.code-intelligence.com' 
+  FUZZING_SERVER_ADDRESS: server-installer-test.code-intelligence.com:6773
+  WEB_APP_ADDRESS:  https://server-installer-test.code-intelligence.com
+  
 
 jobs:
   fuzz_run_all_event_validations:
@@ -19,7 +20,7 @@ jobs:
         uses: CodeIntelligenceTesting/github-actions/start-fuzzing@v3
         with:
           ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
-          test_collection: "projects/taocpp-json-api_git-bf5c006923bc2c11/campaigns/run_all_event_validations-49919590"
+          test_collection: "projects/organizations_4aa6c6fc4350d85b_taocpp-json-api-9edfa5d5/campaigns/run_all_event_validations-49919590"
           git_reference: ${{ github.sha }}
           fuzzing_server_address: ${{ env.FUZZING_SERVER_ADDRESS }}          
       - id: monitor-fuzzing
