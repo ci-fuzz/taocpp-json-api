@@ -2,9 +2,9 @@ name: Code Intelligence Fuzzing
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, fuzz-without-validator ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, fuzz-without-validator ]
 
 env:
   FUZZING_SERVER_ADDRESS: server-installer-test.code-intelligence.com:6773
