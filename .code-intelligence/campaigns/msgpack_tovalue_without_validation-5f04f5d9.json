@@ -11,7 +11,7 @@
       "sanitizer": "ADDRESS",
       "numberOfJobs": 1,
       "engineArguments": [
-        "-entropic=1"
+        "-entropic=1 -rss_limit_mb=4000"
       ]
     },
     {
@@ -20,7 +20,7 @@
       "numberOfJobs": 1,
       "engineArguments": [
         "-entropic=1",
-        "-use_value_profile=1"
+        "-use_value_profile=1 -rss_limit_mb=4000"
       ]
     }
   ],
@@ -33,7 +33,7 @@
           "sanitizer": "ADDRESS",
           "numberOfJobs": 1,
           "engineArguments": [
-            "-entropic=1"
+            "-entropic=1 -rss_limit_mb=4000"
           ]
         },
         {
@@ -42,7 +42,7 @@
           "numberOfJobs": 1,
           "engineArguments": [
             "-entropic=1",
-            "-use_value_profile=1"
+            "-use_value_profile=1 -rss_limit_mb=4000"
           ]
         }
       ]
