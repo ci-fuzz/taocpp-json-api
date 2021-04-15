@@ -18,6 +18,9 @@ extern "C" int FUZZ( const char* Data, size_t Size )
    std::string input( Data, Size );
 
    try {
+      tao::json::events::limit_nesting_depth< tao::json::events::validate_event_order, 15 > lnd;
+      tao::json::msgpack::events::from_string( lnd, input );
+      
       tao::json::events::limit_nesting_depth< tao::json::events::to_value, 15 > consumer;
       tao::json::msgpack::events::from_string( consumer, input );
       const tao::json::value v = std::move( consumer.value );
