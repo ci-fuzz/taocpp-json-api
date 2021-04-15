@@ -1,0 +1,20 @@
+.run_fuzzer:
+  image: cifuzz/gitlab:v3
+  stage: fuzzing
+  variables:
+    TIMEOUT: 300
+    FINDINGS_TYPE: CRASH
+    FUZZING_SERVER_URL: server-installer-test.code-intelligence.com:6773
+    WEB_APP_ADDRESS: https://server-installer-test.code-intelligence.com
+    # By default, the branch which the current CI job is running for is used
+    # GIT_BRANCH: master
+  script:
+    - CAMPAIGN_RUN=$(start_fuzzing.sh)
+    - export CAMPAIGN_RUN
+    - monitor_fuzzing.sh
+
+run_fuzzer_run_all_event_validations:
+  variables:
+    CAMPAIGN_NAME: projects/organizations_4aa6c6fc4350d85b_taocpp-json-api-9edfa5d5/campaigns/run_all_event_validations-49919590
+  extends:
+    - .run_fuzzer
