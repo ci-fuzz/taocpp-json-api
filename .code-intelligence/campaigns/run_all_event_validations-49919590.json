@@ -6,8 +6,8 @@
     "cbor_validation-e67dbd5b",
     "jaxn_validation-e1d0fd29",
     "json_validation-ec5361ba",
-    "msgpack_validation-c627c39d",
-    "ubjson_validation-73aa71cf"
+    "LmNvZGUtaW50ZWxsaWdlbmNlL2Z1enpfdGFyZ2V0cy9tc2dwYWNrX3ZhbGlkYXRpb24uY3Bw",
+    "LmNvZGUtaW50ZWxsaWdlbmNlL2Z1enpfdGFyZ2V0cy91Ympzb25fdmFsaWRhdGlvbi5jcHA="
   ],
   "fuzzerRunConfigurations": [
     {

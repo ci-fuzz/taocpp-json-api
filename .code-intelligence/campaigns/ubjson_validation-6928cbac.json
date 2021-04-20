@@ -3,7 +3,7 @@
   "displayName": "ubjson_validation",
   "maxRunTime": "1800s",
   "fuzzTargets": [
-    "ubjson_validation-73aa71cf"
+    "LmNvZGUtaW50ZWxsaWdlbmNlL2Z1enpfdGFyZ2V0cy91Ympzb25fdmFsaWRhdGlvbi5jcHA="
   ],
   "fuzzerRunConfigurations": [
     {

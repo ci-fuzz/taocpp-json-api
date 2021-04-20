@@ -3,7 +3,7 @@
   "displayName": "msgpack_validation",
   "maxRunTime": "1800s",
   "fuzzTargets": [
-    "msgpack_validation-c627c39d"
+    "LmNvZGUtaW50ZWxsaWdlbmNlL2Z1enpfdGFyZ2V0cy9tc2dwYWNrX3ZhbGlkYXRpb24uY3Bw"
   ],
   "fuzzerRunConfigurations": [
     {
