@@ -1,5 +1,5 @@
-- stages:
-  fuzzing
+stages:
+  - fuzzing
 run_fuzz_tests:
   image: cifuzz/gitlab:v3
   stage: fuzzing
