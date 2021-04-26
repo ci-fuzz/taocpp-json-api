@@ -7,8 +7,8 @@ on:
     branches: [ master ]
 
 env:
-  FUZZING_SERVER_ADDRESS: server-installer-test.code-intelligence.com:6773
-  WEB_APP_ADDRESS:  https://server-installer-test.code-intelligence.com
+  FUZZING_SERVER_ADDRESS: taocpp.app.code-intelligence.com:6773
+  WEB_APP_ADDRESS:  https://taocpp.app.code-intelligence.com
   
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
         uses: CodeIntelligenceTesting/github-actions/start-fuzzing@dev
         with:
           ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
-          project: "projects/organizations_7eb9b18fc0064648_taocpp-json-api_git-5071b24a"
+          project: "projects/organizations_fd4f13cfa25c0b9d_taocpp-json-api_git-5071b24a"
           git_reference: ${{ github.sha }}
           fuzzing_server_address: ${{ env.FUZZING_SERVER_ADDRESS }}          
       - id: monitor-fuzzing
@@ -48,4 +48,5 @@ jobs:
           repository: ${{ github.event.repository.name }}
           git_reference: ${{ github.sha }}
           fuzzing_server_address: ${{ env.FUZZING_SERVER_ADDRESS }}
-          dashboard_address: ${{ env.WEB_APP_ADDRESS }} 
+          dashboard_address: ${{ env.WEB_APP_ADDRESS }}
+          
