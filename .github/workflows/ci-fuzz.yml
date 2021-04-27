@@ -19,15 +19,15 @@ jobs:
         name: Build and Instrument
         uses: CodeIntelligenceTesting/github-actions/start-fuzzing@v3
         with:
-          ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
-          test_collection: "projects/organizations_7eb9b18fc0064648_taocpp-json-api-9edfa5d5/campaigns/msgpack_tovalue_without_validation-5f04f5d9"
+          ci_fuzz_api_token: ${{ secrets.TEST_SERVER_CI_TOKEN }}
+          test_collection: "projects/organizations_7eb9b18fc0064648_taocpp-json-api_git-5071b24a/campaigns/msgpack_tovalue_without_validation-5f04f5d9"
           git_reference: ${{ github.sha }}
           fuzzing_server_address: ${{ env.FUZZING_SERVER_ADDRESS }}          
       - id: monitor-fuzzing
         name: Fuzzing
         uses: CodeIntelligenceTesting/github-actions/monitor-fuzzing@v3
         with:
-          ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
+          ci_fuzz_api_token: ${{ secrets.TEST_SERVER_CI_TOKEN }}
           test_collection_run: ${{ steps.start-fuzzing.outputs.test_collection_run }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pull_request_number: ${{ github.event.pull_request.number }}
@@ -40,7 +40,7 @@ jobs:
         uses: CodeIntelligenceTesting/github-actions/report-coverage@v3
         if: ${{ github.event_name == 'pull_request' && (success() || failure()) }}
         with:
-          ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
+          ci_fuzz_api_token: ${{ secrets.TEST_SERVER_CI_TOKEN }}
           test_collection_run: ${{ steps.start-fuzzing.outputs.test_collection_run }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pull_request_number: ${{ github.event.pull_request.number }}
