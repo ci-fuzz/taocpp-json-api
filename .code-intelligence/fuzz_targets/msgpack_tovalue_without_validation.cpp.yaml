@@ -16,7 +16,8 @@ compiler_extra_args:
   - "-std=c++17"
 
 ## Additional arguments to pass to the fuzz target when it is executed
-# run_extra_args:
+run_extra_args:
+  - "-rss_limit_mb=4000"
 
 ##### This section is only for Java fuzz targets #####
 
