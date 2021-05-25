@@ -30,6 +30,8 @@ pipeline {
             sh '''
               set -eu
 
+              env
+
               # Download cictl if it doesn't exist already
               if [ ! -f "${CICTL}" ]; then
                 curl "${CICTL_URL}" -o "${CICTL}"
