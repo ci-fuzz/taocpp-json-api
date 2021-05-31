@@ -60,6 +60,9 @@ pipeline {
                 CI_COMMIT_SHA=${GIT_COMMIT:-}
               fi
               
+              #Print all env variable for debugging
+	      env
+ 
               # Start fuzzing.
               CAMPAIGN_RUN=$(${CICTL} start \\
                 --server="${FUZZING_SERVER_URL}" \\
