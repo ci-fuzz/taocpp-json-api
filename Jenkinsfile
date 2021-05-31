@@ -64,7 +64,7 @@ pipeline {
               CAMPAIGN_RUN=$(${CICTL} start \\
                 --server="${FUZZING_SERVER_URL}" \\
                 --report-email="${REPORT_EMAIL:-}" \\
-                --git-branch="${GIT_BRANCH:-}" \\
+                --git-branch="${BRANCH_NAME:-}" \\
                 --commit-sha="${CI_COMMIT_SHA:-}" \\
                 "${PROJECT_NAME}")
 
