@@ -9,9 +9,7 @@ pipeline {
         FUZZING_SERVER_URL = 'server-installer-test.code-intelligence.com:6773'
         // Address of the fuzzing web interface
         WEB_APP_ADDRESS =  'https://server-installer-test.code-intelligence.com'
-
-        // The git branch to use for the fuzz test
-        GIT_BRANCH = 'master'
+        
 
         // Credentials for accessing the fuzzing service
         CI_FUZZ_API_TOKEN = credentials('CI_FUZZ_API_TOKEN')
@@ -66,7 +64,7 @@ pipeline {
               CAMPAIGN_RUN=$(${CICTL} start \\
                 --server="${FUZZING_SERVER_URL}" \\
                 --report-email="${REPORT_EMAIL:-}" \\
-                --git-branch="${GIT_BRANCH}" \\
+                --git-branch="${GIT_BRANCH:-}" \\
                 --commit-sha="${CI_COMMIT_SHA:-}" \\
                 "${PROJECT_NAME}")
 
