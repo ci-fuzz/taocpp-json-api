@@ -61,9 +61,9 @@ pipeline {
               fi
               
               # In a Jenkins multibranch pipeline run for a pull request,
-+             # $CHANGE_BRANCH contains the actual branch name. If not set,
-+             # we fall back to $GIT_BRANCH, which is set by the Git plugin.
-+             CI_GIT_BRANCH=\${CHANGE_BRANCH:-\${GIT_BRANCH:-}}
+              # $CHANGE_BRANCH contains the actual branch name. If not set,
+              # we fall back to $GIT_BRANCH, which is set by the Git plugin.
+              CI_GIT_BRANCH=\${CHANGE_BRANCH:-\${GIT_BRANCH:-}}
  
               # Start fuzzing.
               CAMPAIGN_RUN=$(${CICTL} start \\
