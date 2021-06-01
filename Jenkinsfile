@@ -60,14 +60,16 @@ pipeline {
                 CI_COMMIT_SHA=${GIT_COMMIT:-}
               fi
               
-              #Print all env variable for debugging
-	      env
+              # In a Jenkins multibranch pipeline run for a pull request,
++             # $CHANGE_BRANCH contains the actual branch name. If not set,
++             # we fall back to $GIT_BRANCH, which is set by the Git plugin.
++             CI_GIT_BRANCH=\${CHANGE_BRANCH:-\${GIT_BRANCH:-}}
  
               # Start fuzzing.
               CAMPAIGN_RUN=$(${CICTL} start \\
                 --server="${FUZZING_SERVER_URL}" \\
                 --report-email="${REPORT_EMAIL:-}" \\
-                --git-branch="${CHANGE_BRANCH:=${GIT_BRANCH}}" \\
+                --git-branch="${CI_GIT_BRANCH:-}" \\
                 --commit-sha="${CI_COMMIT_SHA:-}" \\
                 "${PROJECT_NAME}")
 
