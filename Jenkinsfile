@@ -9,14 +9,13 @@ pipeline {
         FUZZING_SERVER_URL = 'server-installer-test.code-intelligence.com:6773'
         // Address of the fuzzing web interface
         WEB_APP_ADDRESS =  'https://server-installer-test.code-intelligence.com'
-        
 
         // Credentials for accessing the fuzzing service
         CI_FUZZ_API_TOKEN = credentials('CI_FUZZ_API_TOKEN')
-        CICTL = "${WORKSPACE}/cictl-3.1.1-linux";
-        CICTL_VERSION = '3.1.1';
-        CICTL_SHA256SUM = '96118aa6a89a8a2dfe325ec204f1276d6c4144ecc66f8f0a6f38e359a20a1152';
-        CICTL_URL = 'https://s3.eu-central-1.amazonaws.com/public.code-intelligence.com/cictl/cictl-3.1.1-linux';
+        CICTL = "${WORKSPACE}/cictl-%{CICTL_VERSION}-linux";
+        CICTL_VERSION = '%{CICTL_VERSION}';
+        CICTL_SHA256SUM = '';
+        CICTL_URL = 'https://s3.eu-central-1.amazonaws.com/public.code-intelligence.com/cictl/cictl-%{CICTL_VERSION}-linux';
         FINDINGS_TYPE = 'CRASH';
         TIMEOUT = '900'
   
@@ -54,7 +53,7 @@ pipeline {
               # Log in
               echo "${CI_FUZZ_API_TOKEN}" | $CICTL --server="${FUZZING_SERVER_URL}" login --quiet
 
-              # $CI_COMMIT_SHA may be specified in the jenkins pipeline,
+              # $CI_COMMIT_SHA may be specified in the Jenkins pipeline,
               # or, if using the Git plugin, $GIT_COMMIT could be used.
               if [ -z "${CI_COMMIT_SHA:-}" ]; then
                 CI_COMMIT_SHA=${GIT_COMMIT:-}
@@ -63,8 +62,8 @@ pipeline {
               # In a Jenkins multibranch pipeline run for a pull request,
               # $CHANGE_BRANCH contains the actual branch name. If not set,
               # we fall back to $GIT_BRANCH, which is set by the Git plugin.
-              CI_GIT_BRANCH=\${CHANGE_BRANCH:-\${GIT_BRANCH:-}}
- 
+              CI_GIT_BRANCH=${CHANGE_BRANCH:-${GIT_BRANCH:-}}
+
               # Start fuzzing.
               CAMPAIGN_RUN=$(${CICTL} start \\
                 --server="${FUZZING_SERVER_URL}" \\
