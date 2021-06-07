@@ -14,7 +14,6 @@ pipeline {
         CI_FUZZ_API_TOKEN = credentials('CI_FUZZ_API_TOKEN')
         CICTL = "${WORKSPACE}/cictl-%{CICTL_VERSION}-linux";
         CICTL_VERSION = '%{CICTL_VERSION}';
-	env
         CICTL_SHA256SUM = '1638c7426af10dccc60da00fa70c6c42fb7b8cea59ee926a64568784b61926d3';
         CICTL_URL = 'https://s3.eu-central-1.amazonaws.com/public.code-intelligence.com/cictl/cictl-%{CICTL_VERSION}-linux';
         FINDINGS_TYPE = 'CRASH';
@@ -27,6 +26,8 @@ pipeline {
           steps {
             sh '''
               set -eu
+
+              env
 
               # Download cictl if it doesn't exist already
               if [ ! -f "${CICTL}" ]; then
